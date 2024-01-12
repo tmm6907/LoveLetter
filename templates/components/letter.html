@@ -1,0 +1,22 @@
+{{ define "letter" }}
+<div class="bg-red-500 bg-opacity-75 text-white w-fit p-8 rounded-md">
+    <h1 class="mt-4 mb-2 text-3xl">{{ .Letter.Title }}</h1>
+    <form hx-post="/api/send/">
+        <input type="hidden" name="answer" value="">
+        <button id="yesBtn" class="inline-block mr-2 text-2xl">{{ .Yes }}</button>
+        <button id="noBtn" class="inline-block ml-2 text-2xl">{{ .No }}</button>
+    </form>
+</div>
+<script>
+    let yes = document.getElementById("yesBtn")
+    let no = document.getElementById("noBtn")
+    let answer = document.getElementsByName("answer")[0]
+    yes.addEventListener("click", ()=>{
+        answer.value = event.target.textContent
+    })
+    no.addEventListener("click", ()=>{
+        answer.value = event.target.textContent
+    })
+
+</script>
+{{ end }}
