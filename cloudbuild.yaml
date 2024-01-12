@@ -1,0 +1,7 @@
+steps:
+  - name: 'gcr.io/cloud-builders/go'
+    args: ['go', 'mod', 'download']
+  - name: 'gcr.io/cloud-builders/go'
+    args: ['go', 'build', '-o', 'app']
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: ['app', 'deploy', 'app.yaml']
